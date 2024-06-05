@@ -1,0 +1,140 @@
+/* styles.css */
+
+/* Set up the overall body styling */
+body {
+  font-family: Arial, sans-serif; /* Use Arial as the primary font */
+  display: flex; /* Use flexbox to center the content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  margin: 0; /* Remove default margin */
+  background: linear-gradient(232deg, #a57400, #6500d4, #00d4b0, #ff0000); /* Set a gradient background */
+  background-size: 240% 240%; /* Make the gradient larger than the viewport */
+  animation: gradient-animation 6s ease infinite; /* Animate the background */
+}
+
+/* Keyframes for gradient background animation */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Style the container for the navigation dots */
+.dotcontainer {
+  background-color: bisque; /* Light background color for contrast */
+}
+
+/* Style the main container for the slider */
+.slider-container {
+  position: relative; /* Position relative to allow absolute positioning of buttons */
+  width: 80%; /* Make the container take 80% of the parent's width */
+  max-width: 600px; /* Set a maximum width */
+  overflow: hidden; /* Hide overflow content */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style the container that holds the slides */
+.slider {
+  display: flex; /* Use flexbox to align slides horizontally */
+  transition: transform 0.5s ease-in-out; /* Smooth transition for slide movement */
+}
+
+/* Style each slide */
+.slide {
+  min-width: 100%; /* Each slide takes full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  display: none; /* Hide all slides initially */
+  opacity: 0; /* Initially hide slides */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for opacity */
+}
+
+/* Style for the active slide */
+.slide.active {
+  display: block; /* Show the active slide */
+  opacity: 1; /* Fully visible */
+}
+
+/* Style for the next slide animation */
+.slide.animate-next {
+  animation: fadeIn 0.5s ease-in-out; /* Apply fade-in animation */
+}
+
+/* Style for the previous slide animation */
+.slide.animate-prev {
+  animation: fadeIn 0.5s ease-in-out; /* Apply fade-in animation */
+}
+
+/* Define fade-in keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with 0 opacity */
+  }
+  to {
+    opacity: 1; /* End with full opacity */
+  }
+}
+
+/* Style the navigation buttons */
+.prev, .next {
+  position: absolute; /* Position absolutely within the container */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px; /* Padding for better click area */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 50%; /* Rounded buttons */
+}
+
+/* Position the previous button on the left */
+.prev {
+  left: 10px;
+}
+
+/* Position the next button on the right */
+.next {
+  right: 10px;
+}
+
+/* Add hover effect to the buttons */
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
+/* Style the container for the dots */
+.dotcontainer {
+  text-align: center; /* Center the dots horizontally */
+  padding: 10px 0; /* Add padding above and below the dots */
+}
+
+/* Style for each dot */
+.dot {
+  height: 15px; /* Set height */
+  width: 15px; /* Set width */
+  margin: 0 5px; /* Add margin to space the dots */
+  background-color: #bbb; /* Light grey background for inactive dots */
+  border-radius: 50%; /* Make the dots circular */
+  display: inline-block; /* Display dots inline */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Style for the active dot */
+.dot.active {
+  background-color: #717171; /* Darker color for the active dot */
+}
+
+.head{
+display: inline-block;
+
+}
+
+

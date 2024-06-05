@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <!-- Container for the entire slider -->
+
+
+  <div class="slider-container">
+    
+      <!-- Previous button -->
+      <button class="prev" onclick="prevSlide()">Previous</button>
+      <!-- Container for the images -->
+      <div class="slider">
+          <img src="./images/car-7569896_1280.jpg" alt="Image 1" class="slide">
+          <img src="./images/dog-7719758_1280.jpg" alt="Image 2" class="slide">
+          <img src="./images/futuristic-home-8397004_1280.jpg" alt="Image 3" class="slide">
+          <img src="./images/orange-2595941_1280.jpg" alt="Image 4" class="slide">
+          <img src="./images/water-lilies-8307632_1280.jpg" alt="Image 5" class="slide">
+      </div>
+      <!-- Next button -->
+      <button class="next" onclick="nextSlide()">next</button>
+      <!-- Container for the navigation dots -->
+      <div class="dotcontainer"></div>
+  </div>
+  
+</body>
+
+
+</html>
+<script>
+
+// Initialize the current slide index to 0
+let currentSlide = 0;
+
+// Get all the slides and calculate the total number of slides
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+// Get the container where navigation dots will be added
+const dotsContainer = document.querySelector('.dotcontainer');
+
+// Wait until the DOM is fully loaded before executing the following code
+document.addEventListener('DOMContentLoaded', () => {
+    // Create navigation dots dynamically based on the number of slides
+    createDots();
+    // Display the first slide initially
+    showSlide(currentSlide);
+    // Automatically move to the next slide every 3 seconds
+    setInterval(nextSlide, 3000); // Change image every 3 seconds
+});
+
+// Function to create navigation dots
+function createDots() {
+    for (let i = 0; i < totalSlides; i++) {
+        // Create a span element for each dot
+        const dot = document.createElement('span');
+        // Add the 'dot' class to the span element
+        dot.classList.add('dot');
+        // Add a click event listener to the dot to navigate to the corresponding slide
+        dot.addEventListener('click', () => goToSlide(i));
+        // Append the dot to the dots container
+        dotsContainer.appendChild(dot);
+    }
+}
+
+// Function to display the slide at the specified index and update the dots
+function showSlide(index) {
+    // Loop through each slide and update its visibility
+    slides.forEach((slide, i) => {
+        // Remove the 'active' class from all slides
+        slide.classList.remove('active');
+        // Add the 'active' class to the slide at the current index
+        if (i === index) {
+            slide.classList.add('active');
+        }
+    });
+
+    // Get all the dots
+    const dots = document.querySelectorAll('.dot');
+    // Loop through each dot and update its active state
+    dots.forEach((dot, i) => {
+        // Remove the 'active' class from all dots
+        dot.classList.remove('active');
+        // Add the 'active' class to the dot corresponding to the current slide
+        if (i === index) {
+            dot.classList.add('active');
+        }
+    });
+}
+
+// Function to move to the next slide
+function nextSlide() {
+    // Increment the current slide index and wrap around if necessary
+    currentSlide = (currentSlide + 1) % totalSlides;
+    // Display the slide at the updated index
+    showSlide(currentSlide);
+}
+
+// Function to move to the previous slide
+function prevSlide() {
+    // Decrement the current slide index and wrap around if necessary
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    // Display the slide at the updated index
+    showSlide(currentSlide);
+}
+
+// Function to move to a specific slide based on the index
+function goToSlide(index) {
+    // Set the current slide index to the specified index
+    currentSlide = index;
+    // Display the slide at the updated index
+    showSlide(currentSlide);
+}
+
+
+</script>
